@@ -17,7 +17,7 @@ MODELINFOPATTERN = rb"\x44\x8B\x88\xB4\x00\x00\x00\x44" \
                    rb"\x45\x39\x48\x48\x74\x19"
 
 
-async def main(gender):
+async def main():
     try:
         target_gender = input("Please choose a gender: (Type M or F)\n")
         if target_gender.lower() == "f":
