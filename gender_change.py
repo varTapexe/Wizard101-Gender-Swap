@@ -48,6 +48,8 @@ async def main():
             print(f"Invalid Wizard101 path.")
         elif "list index out of range" in f'{e}':
             print(f"Make sure Wizard101 is open.") 
+        elif "You most likely need to restart the client" in f'{e}':
+            print("Restart Wizard101 before using again.")
         else:
             print(f"An error occured: {e}") 
         exit()
