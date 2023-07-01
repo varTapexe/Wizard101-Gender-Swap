@@ -3,7 +3,7 @@ import struct
 
 from wizwalker import ClientHandler, utils
 
-path = input("What is your Wizard101 path? (Example: C:\Kingsisle Entertainment\Wizard101)")
+path = input("What is your Wizard101 path? (Example: C:\Kingsisle Entertainment\Wizard101)\n")
 utils.override_wiz_install_location(rf'{path}')
 
 target_gender = False
@@ -40,7 +40,7 @@ async def main(gender):
                     print(f"{packed_gender_bytes=}")
                     await client.hook_handler.write_bytes(model_info_gender, packed_gender_bytes)
         else:
-            target_gender = input("Please choose a gender (Type M or F)")
+            target_gender = input("Please choose a gender: (Type M or F)\n")
             if target_gender.lower() == "f":
                 target_gender = 0
             elif target_gender.lower() == "m":
@@ -65,10 +65,13 @@ async def main(gender):
                     print(f"{packed_gender_bytes=}")
                     await client.hook_handler.write_bytes(model_info_gender, packed_gender_bytes)
     except Exception as e:
-        if "root.wad not found" in e:
-            print(f"An error occured: {e}") 
+        if "root.wad not found" in f'{e}':
+            print(f"Invalid Wizard101 path.")
+        elif "list index out of range" in f'{e}':
+            print(f"Make sure Wizard101 is open.") 
         else:
-            print(f"Invalid Wizard101 path.")   
+            print(f"An error occured: {e}") 
+        exit()
 
 
 if __name__ == "__main__":
